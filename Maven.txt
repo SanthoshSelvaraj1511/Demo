@@ -1,0 +1,14 @@
+Maven
+
+The -D flag in Maven is used to define system properties. These properties can be accessed within
+Maven's build configuration, plugins, and other parts of the project.
+
+
+The target folder in Maven is where all compiled code, test results, and packaged artifacts are 
+stored during the build process. It serves as the primary location for temporary build outputs.
+
+compliled code means
+---------------------
+
+The target folder in Maven stores compiled Java bytecode (.class files) generated from source code during
+the build process. It's a temporary directory used for build outputs in Maven projects.
