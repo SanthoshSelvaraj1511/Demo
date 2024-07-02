@@ -1,0 +1,127 @@
+Thread safety means: Ensuring that a set of instructions or operations can be executed concurrently by multiple threads without leading to inconsistent or incorrect results.
+--------------------
+Data corruption: Specifically refers to unintended changes or errors in shared data due to concurrent access. 
+---------------
+This includes scenarios where one thread's operation interferes with another thread's operation,
+                                  --------------------------------------------------------------
+leading to incorrect or unexpected data values
+-------------------------------------------------
+
+
+Mutable object : In Java, an object is considered mutable if its state (the values of its attributes or fields) 
+can be modified after the object is instantiated (initialized). This means you can change the object's internal 
+data without needing to create a new instance of the object.
+
+// Mutable class representing a Person with mutable attributes
+class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getter methods
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    // Setter methods to modify the state of the object
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{name='" + name + "', age=" + age + "}";
+    }
+}
+
+public class MutableObjectExample {
+    public static void main(String[] args) {
+        // Creating a mutable Person object
+        Person person = new Person("Alice", 30);
+        System.out.println("Initial Person: " + person);
+
+        // Modifying the state of the object using setter methods
+        person.setName("Bob");
+        person.setAge(25);
+        System.out.println("Updated Person: " + person);
+    }
+}
+
+
+ex 2: 
+import java.util.ArrayList;
+import java.util.List;
+
+public class MutableCollectionExample {
+    public static void main(String[] args) {
+        // Creating a mutable ArrayList of integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+        System.out.println("Original List: " + numbers);
+
+        // Modifying the list by changing an element
+        numbers.set(1, 25);
+        System.out.println("Modified List: " + numbers);
+
+        // Adding new elements
+        numbers.add(40);
+        System.out.println("Updated List: " + numbers);
+    }
+}
+
+
+Mutable objects are not inherently thread-safe primarily due to the following reasons:
+
+Concurrent Modifications: Mutable objects allow their state (internal data or attributes) to be modified after
+------------------------ 
+initialization. When multiple threads concurrently modify the same mutable object without proper synchronization,
+it can lead to race conditions.
+
+Race Conditions: Race conditions occur when the outcome of operations depends on the timing or interleaving of 
+----------------
+multiple threads. For mutable objects, if one thread reads a value while another thread is in the process of 
+modifying it, the reading thread may see an inconsistent or intermediate state of the object.
+
+Inconsistent State: Concurrent modifications can leave the object in an inconsistent state.
+For example, if one thread adds an element to a list while another thread iterates over the list, the 
+iterating thread may encounter unexpected behavior or even throw exceptions (like ConcurrentModificationException in Java).
+
+List<String> list = new ArrayList<>();
+
+// Thread 1 adds an element
+list.add("A");
+
+// Thread 2 concurrently iterates over the list
+for (String element : list) {
+    // Process each element
+}
+
+
+
+Immutable Object : 
+
+Immutable objects in Java are objects whose state (the values of their attributes or fields) 
+cannot be changed after they are initialized. Once an immutable object is created, its state remains constant 
+throughout its lifetime
+
+eg String str = "Hello";
+   str = str+ "Hello";  // this will create new object 
+
+
+
+
