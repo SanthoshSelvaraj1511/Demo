@@ -8,7 +8,7 @@ The target folder in Maven is where all compiled code, test results, and package
 stored during the build process. It serves as the primary location for temporary build outputs.
 
 compliled code means
----------------------
+------------------------
 
 The target folder in Maven stores compiled Java bytecode (.class files) generated from source code during
 the build process. It's a temporary directory used for build outputs in Maven projects.

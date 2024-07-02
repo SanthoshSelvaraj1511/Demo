@@ -5,7 +5,7 @@ Data corruption: Specifically refers to unintended changes or errors in shared d
 This includes scenarios where one thread's operation interferes with another thread's operation,
                                   --------------------------------------------------------------
 leading to incorrect or unexpected data values
--------------------------------------------------
+---------------------------------------------------
 
 
 Mutable object : In Java, an object is considered mutable if its state (the values of its attributes or fields) 
